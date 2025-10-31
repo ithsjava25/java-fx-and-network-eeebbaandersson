@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
-    <children>
-        <Label fx:id="messageLabel" text="Hello, JavaFX!" />
-      <VBox prefHeight="299.0" prefWidth="225.0" />
-    </children>
-</StackPane>
+<VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
+
+    <Label styleClass="main-header" text="WELCOME!" />
+    <Label fx:id="messageLabel" prefHeight="50" prefWidth="300.0" text="Hello, JavaFX!" />
+
+    <VBox fx:id="glassPaneContainer" styleClass="glass-pane">
+        <Region prefHeight="300" prefWidth="300.0" />
+    </VBox>
+   <TextField fx:id="inputField" alignment="BOTTOM_LEFT" maxWidth="350.0" promptText="Skriv ditt meddelande här..." styleClass="glass-input">
+      <font>
+         <Font size="15.0" />
+      </font>
+      <VBox.margin>
+         <Insets bottom="10.0" top="10.0" />
+      </VBox.margin>
+   </TextField>
+
+
+
+
+</VBox>

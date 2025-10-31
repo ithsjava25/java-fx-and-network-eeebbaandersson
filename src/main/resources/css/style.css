@@ -1,0 +1,49 @@
+.root{
+    -fx-background-color: linear-gradient(to bottom right, rgba(123, 170, 218, 0.82), rgba(0, 88, 143, 0.91));
+    -fx-padding: 80px;
+
+}
+
+.main-header {
+-fx-font-size: 35px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 0 0;
+    -fx-text-fill: white;
+
+}
+
+#messageLabel{
+    -fx-alignment: center;
+}
+
+/* Glassmorphism styling av ruta */
+.glass-pane {
+    -fx-pref-width: 350px;
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Transparens */
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: rgba(255, 255, 255, 0.1); /* Lysande kant */
+    -fx-border-width: 1.5;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 5); /* Skugga */
+}
+
+.glass-input {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-padding: 8 15;
+
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.6);
+
+}
+
+
+
+
+
+

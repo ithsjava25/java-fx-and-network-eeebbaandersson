@@ -13,6 +13,7 @@ public class HelloController {
     @FXML
     private Label messageLabel;
 
+
     @FXML
     private void initialize() {
         if (messageLabel != null) {
