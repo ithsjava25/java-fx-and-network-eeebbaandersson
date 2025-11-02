@@ -28,10 +28,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 30, 0, 0, 5); /* Skugga */
 }
 
+
+
 .glass-input {
-    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-color: rgba(255, 255, 255, 0.1);  /* Transparens */
     -fx-background-radius: 10;
-    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-color: rgba(255, 255, 255, 0.15); /* Lysande kant */
     -fx-border-width: 1;
     -fx-border-radius: 10;
     -fx-text-fill: white;
@@ -41,6 +43,8 @@
     -fx-prompt-text-fill: rgba(255, 255, 255, 0.6);
 
 }
+
+
 
 
 

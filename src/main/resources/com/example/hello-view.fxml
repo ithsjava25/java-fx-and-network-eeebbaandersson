@@ -5,25 +5,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
-
-    <Label styleClass="main-header" text="WELCOME!" />
-    <Label fx:id="messageLabel" prefHeight="50" prefWidth="300.0" text="Hello, JavaFX!" />
-
-    <VBox fx:id="glassPaneContainer" styleClass="glass-pane">
-        <Region prefHeight="300" prefWidth="300.0" />
-    </VBox>
-   <TextField fx:id="inputField" alignment="BOTTOM_LEFT" maxWidth="350.0" promptText="Skriv ditt meddelande här..." styleClass="glass-input">
+<VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
+    <Label styleClass="main-header" text="CHATDEMO" />
+   <ScrollPane prefHeight="200.0" prefWidth="200.0" styleClass="glass-pane">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+     </content>
+   </ScrollPane>
+   <TextField fx:id="inputField" maxWidth="350.0" promptText="Skriv ett meddelande..." styleClass="glass-input">
       <font>
          <Font size="15.0" />
       </font>
       <VBox.margin>
          <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
+
    </TextField>
-
-
-
 
 </VBox>
