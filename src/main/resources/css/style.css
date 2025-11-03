@@ -1,6 +1,6 @@
 .root{
     -fx-background-color: linear-gradient(to bottom right, rgba(123, 170, 218, 0.82), rgba(0, 88, 143, 0.91));
-    -fx-padding: 80px;
+    -fx-padding: 100px;
 }
 
 .main-header {
@@ -21,7 +21,7 @@
     -fx-border-color: transparent; /* Tillfällig ram runt vår chatbox */
     -fx-background-radius: 0;
     -fx-border-radius: 0;
-    -fx-padding: 0;
+    -fx-padding: 10;
     -fx-effect: none;
 }
 
@@ -33,7 +33,7 @@
 .glass-pane .content{
     -fx-padding: 0;
     -fx-background-color: transparent;
-    -fx-translate-x: -1;
+
 
 }
 
@@ -92,7 +92,7 @@
 }
 
 .sender-bubble{
-    -fx-background-color: rgb(61, 75, 87);
+    -fx-background-color: rgba(86, 109, 133, 0.62);
     -fx-background-radius: 15;
     -fx-border-radius: 15;
     -fx-padding: 10 14;

@@ -5,22 +5,19 @@
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
-    <Label styleClass="main-header" text="CHATDEMO">
+    <Label alignment="CENTER" styleClass="main-header" text="CHATDEMO">
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin></Label>
 
    <ScrollPane fx:id="chatScrollPane" prefHeight="400.0" prefWidth="350.0" styleClass="glass-pane" vbarPolicy="ALWAYS">
        <content>
-           <VBox fx:id="messageArea"
-                 prefWidth="330.0"
-                 spacing="10"
-                 styleClass="message-are-padding" >
+           <VBox fx:id="messageArea" prefWidth="330.0" spacing="10.0" styleClass="message-are-padding">
          </VBox>
       </content>
    </ScrollPane>
 
-   <TextField fx:id="inputField" maxWidth="350.0" promptText="Skriv ett meddelande..." onAction="#sendMessage" styleClass="glass-input">
+   <TextField fx:id="inputField" maxWidth="350.0" onAction="#sendMessage" promptText="Skriv ett meddelande..." styleClass="glass-input">
       <VBox.margin>
          <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
