@@ -8,6 +8,7 @@
     -fx-font-weight: bold;
     -fx-padding: 10px 0 0 0;
     -fx-text-fill: white;
+    -fx-alignment: Center;
 }
 
 #messageLabel {
@@ -17,6 +18,7 @@
 /* Glassmorphism styling av chattruta */
 .glass-pane {
     -fx-pref-width: 350px;
+    -fx-pref-height: 400px;
     -fx-background-color: transparent; /* Transparens */
     -fx-border-color: transparent; /* Tillfällig ram runt vår chatbox */
     -fx-background-radius: 0;
@@ -72,6 +74,7 @@
     -fx-border-color: rgba(255, 255, 255, 0.15); /* Lysande kant */
     -fx-border-width: 1;
     -fx-border-radius: 10;
+    -fx-max-width: 350;
     -fx-text-fill: white;
     -fx-font-size: 14pt;
     -fx-padding: 8 15;
@@ -102,6 +105,8 @@
 
 }
 
-.message-are-padding {
+.message-area {
+    -fx-pref-width: 330px;
+    -fx-spacing: 10;
     -fx-padding: 0;
 }
