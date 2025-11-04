@@ -14,6 +14,7 @@
    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="ALWAYS">
        <content>
            <VBox fx:id="messageArea" styleClass="message-area">
+               <ListView fx:id="messageView"/>
          </VBox>
       </content>
    </ScrollPane>

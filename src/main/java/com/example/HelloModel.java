@@ -28,7 +28,7 @@ public class HelloModel {
         //Läser in information från vår env
         Dotenv dotenv = Dotenv.load();
         hostName = Objects.requireNonNull(dotenv.get("HOST_NAME"));
-        //receiveMessage();
+        receiveMessage();
     }
 
     public ObservableList<NtfyMessagesDto> getMessages() {
@@ -55,7 +55,7 @@ public class HelloModel {
 
         //Todo: se till att texten som skickas till server blir detsamma som användarinmatningen och inte Hello World!
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .POST(HttpRequest.BodyPublishers.ofString("Hello World"))
+                .POST(HttpRequest.BodyPublishers.ofString(text))
                 .uri(URI.create(hostName + "/mytopic"))
                 .build();
 

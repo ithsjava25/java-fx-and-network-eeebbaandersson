@@ -16,7 +16,8 @@ import javafx.scene.layout.VBox;
 public class HelloController {
 
     private final HelloModel model = new HelloModel();
-    public ListView<NtfyMessagesDto> messagesView;
+    public ListView<NtfyMessagesDto> messageView;
+
 
     @FXML
     private ScrollPane chatScrollPane;
@@ -36,7 +37,7 @@ public class HelloController {
         if (messageLabel != null) {
             messageLabel.setText(model.getGreeting());
         }
-       // messagesView.setItems(model.getMessages());
+       messageView.setItems(model.getMessages());
     }
 
     //Funktion för att skicka meddelande när användaren trycker enter
@@ -47,13 +48,9 @@ public class HelloController {
             model.sendMessage(messageText);
             inputField.clear();
 
-
-            //Tillfälligt svar från "bot"
-//            addMessage("Jag fick ditt meddelande: " + messageText, false);
         }
     }
-
-
+    
     //Todo: Behåll men flytta metoden någon annanstans?
     private void addMessage(String text, boolean isUser) {
         HBox messageContainer = createMessageBubble(text, isUser);
