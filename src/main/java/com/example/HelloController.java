@@ -22,8 +22,6 @@ public class HelloController {
     @FXML
     private ScrollPane chatScrollPane;
 
-    @FXML
-    private VBox messageArea;
 
     @FXML
     private TextField inputField;
@@ -38,7 +36,9 @@ public class HelloController {
             messageLabel.setText(model.getGreeting());
         }
        messageView.setItems(model.getMessages());
+
     }
+
 
     //Funktion för att skicka meddelande när användaren trycker enter
     public void sendMessage(ActionEvent actionEvent) {
@@ -46,34 +46,38 @@ public class HelloController {
 
         if(!messageText.isEmpty()) {
             model.sendMessage(messageText);
+
             inputField.clear();
 
+
         }
-    }
-    
-    //Todo: Behåll men flytta metoden någon annanstans?
-    private void addMessage(String text, boolean isUser) {
-        HBox messageContainer = createMessageBubble(text, isUser);
-        messageArea.getChildren().add(messageContainer);
 
     }
 
     //Todo: Behåll men flytta metoden någon annanstans?
-    private HBox createMessageBubble(String text, boolean isUser) {
-        Label messageLabel = new Label(text);
-        messageLabel.setWrapText(true);
-        messageLabel.setMaxWidth(250);
+//    private void addMessage(String text, boolean isUser) {
+//
+//        HBox messageContainer = createMessageBubble(text, isUser);
+//        messageArea.getChildren().add(messageContainer);
+//
+//    }
 
-        HBox container = new HBox();
-        container.getChildren().add(messageLabel);
-
-        if (isUser) {
-            messageLabel.getStyleClass().add("user-bubble");
-            container.setAlignment(Pos.CENTER_RIGHT);
-        } else {
-            messageLabel.getStyleClass().add("sender-bubble");
-            container.setAlignment(Pos.CENTER_LEFT);
-        }
-        return container;
-    }
+    //Todo: Behåll men flytta metoden någon annanstans?
+//    private HBox createMessageBubble(String text, boolean isUser) {
+//        Label messageLabel = new Label(text);
+//        messageLabel.setWrapText(true);
+//        messageLabel.setMaxWidth(250);
+//
+//        HBox container = new HBox();
+//        container.getChildren().add(messageLabel);
+//
+//        if (isUser) {
+//            messageLabel.getStyleClass().add("user-bubble");
+//            container.setAlignment(Pos.CENTER_RIGHT);
+//        } else {
+//            messageLabel.getStyleClass().add("sender-bubble");
+//            container.setAlignment(Pos.CENTER_LEFT);
+//        }
+//        return container;
+//    }
 }

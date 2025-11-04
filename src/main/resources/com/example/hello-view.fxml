@@ -4,20 +4,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.HelloController">
+<VBox alignment="CENTER" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelloController">
     <Label styleClass="main-header" text="CHATDEMO">
       <VBox.margin>
          <Insets bottom="10.0" />
       </VBox.margin></Label>
 
-   <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="ALWAYS">
-       <content>
-           <VBox fx:id="messageArea" styleClass="message-area">
-               <ListView fx:id="messageView"/>
-         </VBox>
-      </content>
-   </ScrollPane>
+    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="ALWAYS">
+            <ListView fx:id="messageView" styleClass="glass-pane, message-area"/>
+
+    </ScrollPane>
 
    <TextField fx:id="inputField" onAction="#sendMessage" promptText="Skriv ett meddelande..." styleClass="glass-input">
       <VBox.margin>

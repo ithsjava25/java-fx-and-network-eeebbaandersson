@@ -53,7 +53,9 @@ public class HelloModel {
             return;
         }
 
-        //Todo: se till att texten som skickas till server blir detsamma som användarinmatningen och inte Hello World!
+
+
+
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(text))
                 .uri(URI.create(hostName + "/mytopic"))
