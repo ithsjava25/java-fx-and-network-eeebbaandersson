@@ -26,25 +26,22 @@ public class NtfyConnectionImpl implements NtfyConnection {
         this.hostName = hostName;
     }
 
+    //Todo: Se över logiken igen!
     @Override
     public boolean send(String messageText) {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(messageText))
                 .uri(URI.create(hostName + "/mytopic"))
                 .build();
-        try {
-            //Todo: handle long blocking send requests to not freeze the JavaFX thread!!
-            //1. Use thread send message?
-            //2. Use async?
-            var reponse = http.send(httpRequest, HttpResponse.BodyHandlers.discarding());
+
+            http.sendAsync(httpRequest, HttpResponse.BodyHandlers.discarding())
+                    .exceptionally(ex -> {
+                        System.out.println("Networkerror when sending (Async): " + ex.getMessage());
+                        return null;
+                    });
             return true;
-        } catch (IOException e) {
-            System.out.println("Error sending message");
-        } catch (InterruptedException e) {
-            System.out.println("Interruped sending message");
         }
-        return false;
-    }
+
 
     @Override
     public void receive(Consumer<NtfyMessageDto> messageHandler) {

@@ -24,7 +24,7 @@
     -fx-border-color: transparent; /* Tillfällig ram runt vår chatbox */
     -fx-background-radius: 0;
     -fx-border-radius: 0;
-    -fx-padding: 10;
+    -fx-padding: 0;
     -fx-effect: none;
 }
 
@@ -94,7 +94,6 @@
     -fx-padding: 10 14;
     -fx-text-fill: white;
     -fx-font-size: 12pt;
-
 }
 
 .sender-bubble{
@@ -108,8 +107,7 @@
 }
 
 .message-area {
-    -fx-pref-width: 330px;
     -fx-spacing: 10;
-    -fx-padding: 0;
+    -fx-padding: 10;
 
 }
