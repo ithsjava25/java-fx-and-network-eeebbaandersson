@@ -109,5 +109,14 @@
 .message-area {
     -fx-spacing: 10;
     -fx-padding: 10;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+
+}
+
+.list-cell{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-control-inner-background: transparent;
 
 }
