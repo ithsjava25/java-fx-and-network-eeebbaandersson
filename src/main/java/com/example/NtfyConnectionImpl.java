@@ -33,13 +33,15 @@ public class NtfyConnectionImpl implements NtfyConnection {
                 .uri(URI.create(hostName + "/mytopic"))
                 .build();
         try {
-            //Todo: handle long blocking send requests to not freeze the JavaFX thread
+            //Todo: handle long blocking send requests to not freeze the JavaFX thread!!
             //1. Use thread send message?
             //2. Use async?
-            var reponse = http.sendAsync(httpRequest, HttpResponse.BodyHandlers.discarding());
+            var reponse = http.send(httpRequest, HttpResponse.BodyHandlers.discarding());
             return true;
-        } catch (IllegalArgumentException e) {
-            System.out.println("Illegal Argument Exception: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error sending message");
+        } catch (InterruptedException e) {
+            System.out.println("Interruped sending message");
         }
         return false;
     }

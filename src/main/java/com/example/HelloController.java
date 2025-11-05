@@ -15,7 +15,6 @@ public class HelloController {
     private final HelloModel model = new HelloModel(new NtfyConnectionImpl());
     public ListView<NtfyMessageDto> messageView;
 
-
     @FXML
     private ScrollPane chatScrollPane;
 
@@ -37,7 +36,7 @@ public class HelloController {
 
     }
 
-    //Funktion för att skicka meddelande när användaren trycker enter
+    //Skickar användarens meddelande vid Enter-tryck
     public void sendMessage(ActionEvent actionEvent) {
         String messageText = inputField.getText().trim();
         if (!messageText.isEmpty()) {

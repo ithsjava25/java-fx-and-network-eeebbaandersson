@@ -22,20 +22,20 @@ public class MessageCellFactory extends ListCell<NtfyMessageDto> {
             messageLabel.setWrapText(true);
             messageLabel.setMaxWidth(250);// Begränsar bubblans bredd
 
-            HBox continer = new HBox();
-            continer.getChildren().add(messageLabel);
+            HBox container = new HBox();
+            container.getChildren().add(messageLabel);
 
             boolean isUser = USER_TOPIC.equals(message.topic());
 
             if (isUser) {
                 messageLabel.getStyleClass().add("user-bubble");
-                continer.setAlignment(Pos.CENTER_RIGHT);
+                container.setAlignment(Pos.CENTER_RIGHT);
             } else {
                 messageLabel.getStyleClass().add("sender-bubble");
-                continer.setAlignment(Pos.CENTER_LEFT);
+                container.setAlignment(Pos.CENTER_LEFT);
             }
 
-            setGraphic(continer);
+            setGraphic(container);
         }
     }
 

@@ -15,7 +15,7 @@ public class HelloModel {
 
     private final ObservableList<NtfyMessageDto> messages = FXCollections.observableArrayList();
     private final StringProperty messageText = new SimpleStringProperty();
-    private static final String USER_TOPIC = "user-topic";
+    private static final String SERVER_DEFAULT_TOPIC = "mytopic";
 
     public HelloModel(NtfyConnection connection) {
         this.connection = connection;
@@ -71,10 +71,20 @@ public class HelloModel {
     public void receiveMessage() {
         connection.receive(m -> {
 
-            if (USER_TOPIC.equals(m.topic())){
+
+            if (!SERVER_DEFAULT_TOPIC.equals(m.topic())){
+                Platform.runLater(() -> messages.add(m));
                 return;
             }
-            Platform.runLater(() -> messages.add(m));
+            //Filtrerar bort dubblet av eget meddelande, genom att jämför ett meddelandes message/topic
+            boolean alreadyExistsLocally = messages.stream()
+                    .anyMatch(localM -> localM.message().equals(m.message()) &&
+                    localM.topic().equals("user-topic"));
+
+            if (!alreadyExistsLocally) {
+                Platform.runLater(() -> messages.add(m));
+            }
+
         });
 
     }
