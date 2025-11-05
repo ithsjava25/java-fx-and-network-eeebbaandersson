@@ -15,6 +15,7 @@ public class HelloModel {
 
     private final ObservableList<NtfyMessageDto> messages = FXCollections.observableArrayList();
     private final StringProperty messageText = new SimpleStringProperty();
+    private static final String USER_TOPIC = "user-topic";
 
     public HelloModel(NtfyConnection connection) {
         this.connection = connection;
@@ -51,12 +52,30 @@ public class HelloModel {
             return;
         }
 
+        NtfyMessageDto localMessage = new NtfyMessageDto(
+                null, //id
+                System.currentTimeMillis(), //time
+                "message",// event
+                "user-topic", //För CellFactory
+                messageText //message
+        );
 
+        //Lokal visning (I ListView)
+        messages.add(localMessage);
+
+        //Skickar texten till Connection
         connection.send(messageText);
 
     }
 
     public void receiveMessage() {
-        connection.receive(m -> Platform.runLater(() -> messages.add(m)));
+        connection.receive(m -> {
+
+            if (USER_TOPIC.equals(m.topic())){
+                return;
+            }
+            Platform.runLater(() -> messages.add(m));
+        });
+
     }
 }

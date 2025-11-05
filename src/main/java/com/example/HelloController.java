@@ -33,8 +33,9 @@ public class HelloController {
         }
         messageView.setItems(model.getMessages());
 
-    }
+        messageView.setCellFactory(view -> new MessageCellFactory());
 
+    }
 
     //Funktion för att skicka meddelande när användaren trycker enter
     public void sendMessage(ActionEvent actionEvent) {

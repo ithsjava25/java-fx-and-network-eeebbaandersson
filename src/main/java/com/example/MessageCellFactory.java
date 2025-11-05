@@ -1,35 +1,44 @@
 package com.example;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.HBox;
 
 public class MessageCellFactory extends ListCell<NtfyMessageDto> {
+
+    private static final String USER_TOPIC = "user-topic";
+
+    @Override
+    protected void updateItem(NtfyMessageDto message, boolean empty) {
+        super.updateItem(message, empty);
+
+        if (empty || message == null){
+            setText(null);
+            setGraphic(null);
+        } else {
+
+            Label messageLabel = new Label(message.message());
+            messageLabel.setWrapText(true);
+            messageLabel.setMaxWidth(250);// Begränsar bubblans bredd
+
+            HBox continer = new HBox();
+            continer.getChildren().add(messageLabel);
+
+            boolean isUser = USER_TOPIC.equals(message.topic());
+
+            if (isUser) {
+                messageLabel.getStyleClass().add("user-bubble");
+                continer.setAlignment(Pos.CENTER_RIGHT);
+            } else {
+                messageLabel.getStyleClass().add("sender-bubble");
+                continer.setAlignment(Pos.CENTER_LEFT);
+            }
+
+            setGraphic(continer);
+        }
+    }
+
 }
 
-//Addera logik för skapande av chattbubblor?
 
-//Todo: Behåll men flytta metoden någon annanstans?
-//    private void addMessage(String text, boolean isUser) {
-//
-//        HBox messageContainer = createMessageBubble(text, isUser);
-//        messageArea.getChildren().add(messageContainer);
-//
-//    }
-
-//Todo: Behåll men flytta metoden någon annanstans?
-//    private HBox createMessageBubble(String text, boolean isUser) {
-//        Label messageLabel = new Label(text);
-//        messageLabel.setWrapText(true);
-//        messageLabel.setMaxWidth(250);
-//
-//        HBox container = new HBox();
-//        container.getChildren().add(messageLabel);
-//
-//        if (isUser) {
-//            messageLabel.getStyleClass().add("user-bubble");
-//            container.setAlignment(Pos.CENTER_RIGHT);
-//        } else {
-//            messageLabel.getStyleClass().add("sender-bubble");
-//            container.setAlignment(Pos.CENTER_LEFT);
-//        }
-//        return container;
-//    }
