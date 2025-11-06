@@ -26,7 +26,7 @@ public class NtfyConnectionImpl implements NtfyConnection {
         this.hostName = hostName;
     }
 
-    //Todo: Se över logiken igen!
+
     @Override
     public boolean send(String messageText) {
         HttpRequest httpRequest = HttpRequest.newBuilder()

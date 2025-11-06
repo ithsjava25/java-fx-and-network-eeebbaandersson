@@ -8,21 +8,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static com.github.tomakehurst.wiremock.http.ResponseDefinition.ok;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @WireMockTest
 class HelloModelTest {
 
     @Test
-    @DisplayName("Given a model with messageToSend when calling sendMessage then send method on connection should be called")
-    void sendMessageCallsConnectionWithMessageToSend() {
+    @DisplayName("Given a valid message argument, when sendMessage is called, then NtfyConnection´s sendmethod should be called")
+    void sendMessage_GivenValidArgument_shouldCallConnectionWithArgument() {
         //Arrange  Given
         var spy = new NtfyConnectionSpy();
         var model = new HelloModel(spy);
-        model.setMessageText("Hello World");
+        model.setMessageToSend(" ");
         //Act  When
-        model.sendMessage("");
+        model.sendMessage("Hello World");
         //Assert   Then
         assertThat(spy.message).isEqualTo("Hello World");
     }
@@ -31,13 +30,20 @@ class HelloModelTest {
     void sendMessageToFakeServer(WireMockRuntimeInfo wmRuntimeInfo) {
         var con = new NtfyConnectionImpl("http://localhost:" + wmRuntimeInfo.getHttpPort());
         var model = new HelloModel(con);
-        model.setMessageText("Hello World");
-        stubFor(post("/mytopic").willReturn(ResponseDefinitionBuilder.like(ResponseDefinition.ok())));
+        model.setMessageToSend("Hello World");
+        stubFor(post("/mytopic").willReturn(ok()));
 
-        model.sendMessage(" ");
+        model.sendMessage("Hello World");
 
         //Verify call made to server
         verify(postRequestedFor(urlEqualTo("/mytopic"))
                 .withRequestBody(matching("Hello World")));
     }
 }
+
+
+//Test för att kontrollera om meddedelanden skickas till Nfty-servern?
+
+//Test för att kontrollera att meddelanden tas emot från Ntfy-servern?
+
+

@@ -10,8 +10,8 @@
          <Insets bottom="10.0" />
       </VBox.margin></Label>
 
-    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="ALWAYS">
-            <ListView fx:id="messageView" styleClass="glass-pane, message-area"/>
+    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+            <ListView fx:id="messageView" styleClass="glass-pane, message-area" />
 
     </ScrollPane>
 

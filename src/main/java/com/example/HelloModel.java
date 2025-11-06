@@ -14,7 +14,7 @@ public class HelloModel {
     private final NtfyConnection connection;
 
     private final ObservableList<NtfyMessageDto> messages = FXCollections.observableArrayList();
-    private final StringProperty messageText = new SimpleStringProperty();
+    private final StringProperty messageToSend = new SimpleStringProperty();
     private static final String SERVER_DEFAULT_TOPIC = "mytopic";
 
     public HelloModel(NtfyConnection connection) {
@@ -26,16 +26,16 @@ public class HelloModel {
         return messages;
     }
 
-    public String getMessageText() {
-        return messageText.get();
+    public String getMessageToSend() {
+        return messageToSend.get();
     }
 
-    public StringProperty messageTextProperty() {
-        return messageText;
+    public StringProperty messageToSendProperty() {
+        return messageToSend;
     }
 
-    public void setMessageText(String messageText) {
-        this.messageText.set(messageText);
+    public void setMessageToSend(String messageToSend) {
+        this.messageToSend.set(messageToSend);
     }
 
     /**
@@ -65,12 +65,10 @@ public class HelloModel {
 
         //Skickar texten till Connection
         connection.send(messageText);
-
     }
 
     public void receiveMessage() {
         connection.receive(m -> {
-
 
             if (!SERVER_DEFAULT_TOPIC.equals(m.topic())){
                 Platform.runLater(() -> messages.add(m));
