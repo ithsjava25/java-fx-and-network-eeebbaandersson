@@ -27,13 +27,16 @@ class HelloModelTest {
     }
 
     @Test
-    void sendMessageToFakeServer(WireMockRuntimeInfo wmRuntimeInfo) {
+    void sendMessageToFakeServer(WireMockRuntimeInfo wmRuntimeInfo) throws InterruptedException {
         var con = new NtfyConnectionImpl("http://localhost:" + wmRuntimeInfo.getHttpPort());
         var model = new HelloModel(con);
-        model.setMessageToSend("Hello World");
+        model.setMessageToSend("");
         stubFor(post("/mytopic").willReturn(ok()));
 
         model.sendMessage("Hello World");
+
+        //Ser till att det Asynkrona-anropet hinner klart innan verfify
+        Thread.sleep(100);
 
         //Verify call made to server
         verify(postRequestedFor(urlEqualTo("/mytopic"))
