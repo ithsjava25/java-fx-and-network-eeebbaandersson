@@ -3,7 +3,6 @@ package com.example;
 import io.github.cdimascio.dotenv.Dotenv;
 import tools.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,6 +15,7 @@ public class NtfyConnectionImpl implements NtfyConnection {
     private final HttpClient http = HttpClient.newHttpClient();
     private final String hostName;
     private final ObjectMapper mapper = new ObjectMapper();
+
 
     public NtfyConnectionImpl() {
         Dotenv dotenv = Dotenv.load();

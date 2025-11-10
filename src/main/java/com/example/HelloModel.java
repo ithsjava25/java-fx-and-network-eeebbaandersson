@@ -17,8 +17,11 @@ public class HelloModel {
     private final StringProperty messageToSend = new SimpleStringProperty();
     private static final String SERVER_DEFAULT_TOPIC = "mytopic";
 
+
+
     public HelloModel(NtfyConnection connection) {
         this.connection = connection;
+
         receiveMessage();
     }
 
