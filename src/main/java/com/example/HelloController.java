@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
  */
 public class HelloController {
 
-    private final HelloModel model = new HelloModel(new NtfyConnectionImpl());
+    private final HelloModel model = new HelloModel(new NtfyConnectionImpl(),"mytopic");
     public ListView<NtfyMessageDto> messageView;
 
     @FXML

@@ -23,7 +23,5 @@ public class NtfyConnectionSpy implements NtfyConnection {
         if(messageHandler!=null) {
             messageHandler.accept(message);
         }
-
-
     }
 }
