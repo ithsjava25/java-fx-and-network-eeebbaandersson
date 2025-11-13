@@ -33,10 +33,8 @@ public class HelloController {
         messageView.setItems(model.getMessages());
 
         messageView.setCellFactory(view -> new MessageCellFactory());
-
     }
 
-    //Skickar användarens meddelande vid Enter-tryck
     public void sendMessage(ActionEvent actionEvent) {
         String messageText = inputField.getText().trim();
         if (!messageText.isEmpty()) {

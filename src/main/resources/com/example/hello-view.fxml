@@ -10,9 +10,8 @@
          <Insets bottom="10.0" />
       </VBox.margin></Label>
 
-    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" vbarPolicy="AS_NEEDED" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+    <ScrollPane fx:id="chatScrollPane" styleClass="glass-pane" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
             <ListView fx:id="messageView" styleClass="glass-pane, message-area" />
-
     </ScrollPane>
 
    <TextField fx:id="inputField" onAction="#sendMessage" promptText="Skriv ett meddelande..." styleClass="glass-input">

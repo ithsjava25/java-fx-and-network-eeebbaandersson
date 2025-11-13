@@ -6,7 +6,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 
 public class MessageCellFactory extends ListCell<NtfyMessageDto> {
-
     private static final String USER_TOPIC = "user-topic";
 
     @Override
@@ -20,7 +19,7 @@ public class MessageCellFactory extends ListCell<NtfyMessageDto> {
 
             Label messageLabel = new Label(message.message());
             messageLabel.setWrapText(true);
-            messageLabel.setMaxWidth(250);// Begränsar bubblans bredd
+            messageLabel.setMaxWidth(250);
 
             HBox container = new HBox();
             container.getChildren().add(messageLabel);
@@ -34,7 +33,6 @@ public class MessageCellFactory extends ListCell<NtfyMessageDto> {
                 messageLabel.getStyleClass().add("sender-bubble");
                 container.setAlignment(Pos.CENTER_LEFT);
             }
-
             setGraphic(container);
         }
     }

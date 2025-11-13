@@ -41,10 +41,11 @@ class HelloModelTest {
         model.sendMessage("Hello World");
         //Assert   Then
         assertThat(spy.message).isEqualTo("Hello World");
+
     }
 
     @Test
-    void sendMessageToFakeServer(WireMockRuntimeInfo wmRuntimeInfo) throws InterruptedException {
+    void sendMessageToFakeServer(WireMockRuntimeInfo wmRuntimeInfo){
         //Arrange
         var con = new NtfyConnectionImpl("http://localhost:" + wmRuntimeInfo.getHttpPort());
         var model = new HelloModel(con, "mytopic");
@@ -55,7 +56,11 @@ class HelloModelTest {
         model.sendMessage("Hello World");
 
         //Ser till att det Asynkrona-anropet hinner klart innan verify call
-        Thread.sleep(100);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         //Verify call made to server
         verify(postRequestedFor(urlEqualTo("/mytopic"))
@@ -66,12 +71,14 @@ class HelloModelTest {
     @Test
     void receiveMessageFromFakeServer(WireMockRuntimeInfo wmRuntimeInfo) {
 
+        //Simulerar en ström av två JSON-objekt
         String fakeServerResponse = """
-                {"event":"keepalive", "id":"1","time": 17000000, "topic":"mytopic","message":"Detta meddedelande ska filtreras bort"}
+                {"event":"keepalive", "id":"1","time": 170000, "topic":"mytopic","message":"Detta meddedelande ska filtreras bort"}
                 {"event":"message", "id":"2","time": 150000, "topic":"mytopic", "message":"Hej!"}
                 
                 """;
 
+        //Simulerar servern
         stubFor(get(urlPathEqualTo("/mytopic/json"))
                 .willReturn(aResponse().withStatus(200)
                         .withBody(fakeServerResponse)));
@@ -83,21 +90,23 @@ class HelloModelTest {
 
         con.receive(mockMessageHandler);
 
+        //Initierar funktion från Mockito som kan fånga objekten som skickas till MessageHandler
         ArgumentCaptor<NtfyMessageDto> captor = ArgumentCaptor.forClass(NtfyMessageDto.class);
 
-        //
+        //Kontrollerar att det asynkrona flödet slutförts korrekt genom att pausa testtråden
         Awaitility.await()
                 .atMost(Duration.ofSeconds(5))
                 .untilAsserted(() -> {
 
+                    //Verifierar att mockMesageHandler anropades 1 gång och objektet fångas
                     Mockito.verify(mockMessageHandler,Mockito.times(1))
                             .accept(captor.capture());
                 });
 
-        assertThat(captor.getValue().message())
-                .isEqualTo("Hej!");
-        assertThat(captor.getValue().event())
-                .isEqualTo("message");
+        //Kontrollera innehållet på det uppfångade meddelandet
+        assertThat(captor.getValue().message()).isEqualTo("Hej!");
+        //Säkerställer att det fångade meddedelandet är av rätt typ
+        assertThat(captor.getValue().event()).isEqualTo("message");
     }
 
 

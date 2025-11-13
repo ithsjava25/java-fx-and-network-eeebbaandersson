@@ -12,12 +12,8 @@ import javafx.collections.ObservableList;
 public class HelloModel {
 
     private final NtfyConnection connection;
-
     private final ObservableList<NtfyMessageDto> messages = FXCollections.observableArrayList();
     private final StringProperty messageToSend = new SimpleStringProperty();
-
-    //Ta bort??
-    private static final String SERVER_DEFAULT_TOPIC = "mytopic";
 
     private final String topicToUse;
 
@@ -61,14 +57,14 @@ public class HelloModel {
                 null, //id
                 System.currentTimeMillis(), //time
                 "message",// event
-                "user-topic", //För CellFactory
+                "user-topic", //topic
                 messageText //message
         );
 
-        //Lokal visning (I ListView)
+        //Ger lokal visning av vårt skickade meddelande i listView
         messages.add(localMessage);
 
-        //Skickar texten till Connection
+        //Skickar vidare meddelandet till Connection
         connection.send(messageText);
     }
 
@@ -79,7 +75,7 @@ public class HelloModel {
                 Platform.runLater(() -> messages.add(m));
                 return;
             }
-            //Filtrerar bort dubblet av eget meddelanden, genom att jämför ett meddelandes message/topic
+            //Filtrerar bort dubblet av eget meddelanden, genom jämförelse av message/topic
             boolean alreadyExistsLocally = messages.stream()
                     .anyMatch(localM -> localM.message().equals(m.message()) &&
                     localM.topic().equals("user-topic"));
