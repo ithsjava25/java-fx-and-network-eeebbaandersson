@@ -72,7 +72,7 @@ public class HelloModel {
         connection.receive(m -> {
 
             if (!this.topicToUse.equals(m.topic())){
-                Platform.runLater(() -> messages.add(m));
+                runOnFx(() -> messages.add(m));
                 return;
             }
             //Filtrerar bort dubblet av eget meddelanden, genom jämförelse av message/topic
@@ -81,10 +81,21 @@ public class HelloModel {
                     localM.topic().equals("user-topic"));
 
             if (!alreadyExistsLocally) {
-                Platform.runLater(() -> messages.add(m));
+                runOnFx(() -> messages.add(m));
             }
 
         });
 
     }
+
+    private static void runOnFx(Runnable task) {
+        try {
+            if (Platform.isFxApplicationThread()) task.run();
+            else Platform.runLater(task);
+        } catch (IllegalStateException notInitialized) {
+            // JavaFX toolkit not initialized (e.g., unit tests): run inline
+            task.run();
+        }
+    }
+
 }

@@ -20,15 +20,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @WireMockTest
 class HelloModelTest {
 
-    @BeforeAll
-    static void initJavaFX() {
-
-        try {
-            Platform.startup(() -> {});
-        } catch (IllegalStateException e) {
-
-        }
-    }
+//    @BeforeAll
+//    static void initJavaFX() {
+//
+//        try {
+//            Platform.startup(() -> {});
+//        } catch (IllegalStateException e) {
+//
+//        }
+//    }
 
     @Test
     @DisplayName("Given a valid message argument, when sendMessage is called, then NtfyConnection´s sendmethod should be called")
