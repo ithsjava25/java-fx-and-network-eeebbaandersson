@@ -1,0 +1,121 @@
+.root{
+    -fx-background-color: linear-gradient(to bottom right, rgba(123, 170, 218, 0.82), rgba(0, 88, 143, 0.91));
+    -fx-padding: 100px;
+}
+
+.main-header {
+-fx-font-size: 35px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 0 0;
+    -fx-text-fill: white;
+    -fx-alignment: Center;
+}
+
+#messageLabel {
+    -fx-alignment: center;
+
+}
+
+/* Glassmorphism styling av chattruta */
+.glass-pane {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 400px;
+    -fx-background-color: transparent; /* Transparens */
+    -fx-border-color: transparent; /* Tillfällig ram runt vår chatbox */
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 0;
+    -fx-effect: none;
+}
+
+.glass-pane .viewport{
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.glass-pane .content{
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.glass-pane .scroll-bar:horizontal{
+    -fx-background-color: transparent; /* Just nu transparant vertikal scrollbar */
+}
+
+.glass-pane .scroll-bar:vertical{
+    -fx-background-color: transparent; /* Just nu transparant vertikal scrollbar */
+}
+
+
+.glass-pane .scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 5;
+    -fx-padding: 0;
+}
+
+
+.glass-pane .scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+
+.glass-pane .scroll-bar .increment-button,
+.glass-pane .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.glass-pane .scroll-bar .increment-arrow,
+.glass-pane .scroll-bar .decrement-arrow {
+    -fx-shape: null;
+    -fx-padding: 0;
+}
+
+/* Glassmorphism styling av inputfält */
+.glass-input {
+    -fx-background-color: rgba(255, 255, 255, 0.1);  /* Transparens */
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.15); /* Lysande kant */
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-max-width: 350;
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-padding: 8 15;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.6);
+
+}
+
+
+.user-bubble{
+    -fx-background-color: rgb(50, 119, 174);
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 10 14;
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+}
+
+.sender-bubble{
+    -fx-background-color: rgba(86, 109, 133, 0.62);
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 10 14;
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+}
+
+.message-area {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+
+}
+
+.list-cell{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-control-inner-background: transparent;
+
+}

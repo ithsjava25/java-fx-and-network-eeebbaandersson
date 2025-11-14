@@ -12,8 +12,8 @@ public class HelloFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloFX.class.getResource("hello-view.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 640, 480);
-        stage.setTitle("Hello MVC");
+        Scene scene = new Scene(root, 580, 740);
+        stage.setTitle("JavaFX ChatApplication");
         stage.setScene(scene);
         stage.show();
     }
