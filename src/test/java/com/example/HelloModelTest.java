@@ -2,8 +2,6 @@ package com.example;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import javafx.application.Platform;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -20,23 +18,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 @WireMockTest
 class HelloModelTest {
 
-//    @BeforeAll
-//    static void initJavaFX() {
-//
-//        try {
-//            Platform.startup(() -> {});
-//        } catch (IllegalStateException e) {
-//
-//        }
-//    }
-
     @Test
     @DisplayName("Given a valid message argument, when sendMessage is called, then NtfyConnection´s sendmethod should be called")
     void sendMessage_GivenValidArgument_shouldCallConnectionWithArgument() {
         //Arrange  Given
         var spy = new NtfyConnectionSpy();
         var model = new HelloModel(spy, "mytopic");
-        model.setMessageToSend(" ");
+        model.setMessageToSend("Hello World ");
         //Act  When
         model.sendMessage("Hello World");
         //Assert   Then
@@ -49,7 +37,7 @@ class HelloModelTest {
         //Arrange
         var con = new NtfyConnectionImpl("http://localhost:" + wmRuntimeInfo.getHttpPort());
         var model = new HelloModel(con, "mytopic");
-        model.setMessageToSend("");
+        model.setMessageToSend("Hello World");
         stubFor(post("/mytopic").willReturn(ok()));
 
         //Act
@@ -57,7 +45,7 @@ class HelloModelTest {
 
         //Ser till att det Asynkrona-anropet hinner klart innan verify call
         try {
-            Thread.sleep(100);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -115,7 +103,7 @@ class HelloModelTest {
         var spy = new NtfyConnectionSpy();
         var model = new HelloModel(spy,"mytopic");
 
-       var exampleText = new NtfyMessageDto("id1",3000,"message","user-topic","Hej!");
+       var exampleText = new NtfyMessageDto("id1",3000,"message","mytopic","Hej!");
        spy.simulateIncomingMessage(exampleText);
 
        //Assert

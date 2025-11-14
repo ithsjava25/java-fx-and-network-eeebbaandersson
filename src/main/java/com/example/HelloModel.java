@@ -88,6 +88,7 @@ public class HelloModel {
 
     }
 
+    //Hjälpmetod för att lösa problemet med att köra JavaFX på andra ställen än bara lokalt
     private static void runOnFx(Runnable task) {
         try {
             if (Platform.isFxApplicationThread()) task.run();

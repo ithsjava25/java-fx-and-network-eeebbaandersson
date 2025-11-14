@@ -20,7 +20,7 @@ public class NtfyConnectionSpy implements NtfyConnection {
     }
 
     public void simulateIncomingMessage(NtfyMessageDto message) {
-        if(messageHandler!=null) {
+        if (messageHandler!=null) {
             messageHandler.accept(message);
         }
     }
